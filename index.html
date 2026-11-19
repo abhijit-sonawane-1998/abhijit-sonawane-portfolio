@@ -1,87 +1,290 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abhijit Sonawane | SDET Portfolio</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; }
-    header, footer { background: #333; color: #fff; text-align: center; padding: 1rem; }
-    .container { max-width: 960px; margin: auto; padding: 2rem; background: #fff; }
-    h1, h2 { color: #2c3e50; }
-    ul { padding-left: 1.2rem; }
-    ul li::marker { color: green; }
-    a { color: #2980b9; text-decoration: none; }
-    .section { margin-bottom: 2rem; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abhijit Sonawane | SDET Portfolio</title>
+<meta name="description" content="Abhijit Sonawane, SDET and Software Testing Engineer with 4+ years of experience in Playwright, Selenium, API testing and FinTech applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F6; --tile:#FFFFFF; --ink:#16212E; --muted:#51606F; --line:#D8E0E8;
+  --brand:#1F4B99; --brand-bg:#E3ECFA; --pass:#0B7A5A; --pass-bg:#D9F2E8;
+  --sun:#F2B544; --sun-bg:#FDF1D6; --dark:#16212E; --on-dark:#EAF0F6;
+  --head:"Bricolage Grotesque","Segoe UI",Arial,sans-serif;
+  --body:"Public Sans","Segoe UI",Arial,sans-serif;
+  --r:20px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0D141C; --tile:#16202B; --ink:#E8EEF3; --muted:#9FB0BF; --line:#263544;
+    --brand:#8DB4F5; --brand-bg:#1B2A44; --pass:#4FD1A5; --pass-bg:#11352B;
+    --sun:#F2B544; --sun-bg:#3A2F14; --dark:#223245; --on-dark:#EAF0F6;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}
+a{color:var(--brand)}
+a:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;padding-top:10px;padding-bottom:10px}
+nav b{font:800 18px var(--head);margin-right:auto}
+nav a{text-decoration:none;color:var(--muted);font-size:15px;font-weight:500;padding:6px 12px;border-radius:99px}
+nav a:hover{background:var(--tile);color:var(--ink)}
+section{padding:40px 0 8px}
+h2.t{font:800 clamp(28px,4vw,38px)/1.1 var(--head);margin:0 0 6px;letter-spacing:-.01em}
+p.sub{margin:0 0 22px;color:var(--muted);max-width:62ch}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.tile{background:var(--tile);border:1px solid var(--line);border-radius:var(--r);padding:24px;grid-column:span 4;min-width:0}
+.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}
+.tile h3{font:700 20px/1.25 var(--head);margin:0 0 8px}
+.tile p{margin:0 0 10px;color:var(--muted)}
+.tile p:last-child{margin-bottom:0}
+.tile ul{margin:0;padding-left:20px}
+.tile li{margin-bottom:6px}
+.brand{background:var(--brand);border-color:var(--brand);color:#fff}
+.brand p,.brand h3{color:#fff}
+.darkt{background:var(--dark);border-color:var(--dark);color:var(--on-dark)}
+.darkt p{color:#B8C6D4}.darkt h3{color:var(--on-dark)}
+.green{background:var(--pass-bg);border-color:var(--pass-bg)}
+.green h3{color:var(--pass)}
+.sun{background:var(--sun-bg);border-color:var(--sun-bg)}
+.sun p{color:var(--ink)}
+.big{font:800 clamp(44px,6vw,64px)/1 var(--head);margin:0 0 6px;display:block}
+.ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--brand-bg);color:var(--brand);font:800 18px var(--head);margin-bottom:14px}
+.darkt .ic,.brand .ic{background:rgba(255,255,255,.16);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0!important;margin:0}
+.chips li{margin:0;background:var(--brand-bg);color:var(--brand);padding:4px 13px;border-radius:99px;font-size:14px;font-weight:600}
+.darkt .chips li{background:rgba(255,255,255,.14);color:#fff}
+.green .chips li{background:#fff;color:var(--pass)}
+.meta{font-size:15px;color:var(--muted);margin:0 0 14px}
+.badge{display:inline-block;background:var(--pass-bg);color:var(--pass);font-size:13px;font-weight:700;padding:3px 12px;border-radius:99px;margin-bottom:12px}
+.hero{padding:44px 0 8px}
+.hero h1{font:800 clamp(44px,8vw,84px)/.98 var(--head);margin:0 0 16px;letter-spacing:-.03em}
+.hero .role{font:500 clamp(19px,2.6vw,24px)/1.35 var(--head);margin:0 0 16px;opacity:.95}
+.hero .lead{color:#DCE7F7;max-width:54ch;margin-bottom:22px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none}
+.btn.a{background:#fff;color:var(--brand)}
+.btn.b{border:2px solid rgba(255,255,255,.7);color:#fff}
+.avatar{display:grid;place-items:center;text-align:center;min-height:200px}
+.avatar b{font:800 72px var(--head);letter-spacing:-.04em}
+.job{grid-column:span 12}
+.job .cols{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
+.job .cols>div+div{border-left:1px dashed var(--line);padding-left:28px}
+.step{display:flex;gap:12px;margin-bottom:12px}
+.step i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--pass-bg);color:var(--pass);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px}
+.step p{margin:0;color:var(--ink)}
+.mini{grid-column:span 3;padding:18px}
+.mini h3{font-size:17px;margin-bottom:4px}
+.mini p{font-size:15px;margin:0}
+.cert{grid-column:span 4;display:flex;gap:14px;align-items:flex-start;padding:18px}
+.cert .ic{margin:0;flex:none}
+.cert h3{font-size:17px;margin:0}
+.cert p{font-size:14px;margin:0}
+.contact a{display:block;font-weight:600;margin-bottom:6px;word-break:break-word}
+footer{padding:36px 0 44px;color:var(--muted);font-size:15px}
+@media (max-width:880px){
+  .s3,.s4,.s5,.s6,.s7,.s8,.mini,.cert{grid-column:span 6}
+  .job .cols{grid-template-columns:1fr}.job .cols>div+div{border:0;padding:0}
+}
+@media (max-width:560px){
+  .s3,.s4,.s5,.s6,.s7,.s8,.mini,.cert{grid-column:span 12}
+  .tile{padding:20px}
+}
+</style>
 </head>
 <body>
-  <header>
-    <h1>Abhijit Sonawane</h1>
-    <p>SDET | Automation & Manual Test Engineer | Infosys</p>
-  </header>
-
-  <div class="container">
-    <section class="section">
-      <h2>About Me</h2>
-      <p>A passionate QA professional with <strong>2.10 years</strong> of IT experience in software testing, including <strong>manual and automation</strong> testing. Skilled in UI, regression, API, and database testing using tools like <strong>Selenium WebDriver, Rest Assured, Postman, and TestNG</strong>. Currently working as a <strong>Systems Engineer at Infosys, Pune</strong>.</p>
-    </section>
-
-    <section class="section">
-      <h2>Education</h2>
-      <p><strong>Bachelor of Computer Engineering</strong><br/>
-      Savitribai Phule Pune University – 2021</p>
-    </section>
-
-    <section class="section">
-      <h2>Work Experience</h2>
-      <p><strong>Systems Engineer – Infosys, Pune</strong><br/>
-      June 2022 – Present</p>
-      <ul>
-        <li>Performed manual and automation testing across web and API layers</li>
-        <li>Created test cases and frameworks using Selenium, TestNG, and Maven</li>
-        <li>Executed and validated API requests using Rest Assured and Postman</li>
-        <li>Participated in Agile/Scrum ceremonies and defect tracking via JIRA</li>
-        <li>Worked in the Beverage domain project "Victory Brewing"</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Languages:</strong> Java, SQL</li>
-        <li><strong>Tools:</strong> Selenium WebDriver, TestNG, Rest Assured, Postman, Swagger, JIRA</li>
-        <li><strong>Testing:</strong> Functional, Regression, Smoke, UI, API, Database Testing</li>
-        <li><strong>Frameworks:</strong> POM, Data-Driven, BDD with Cucumber</li>
-        <li><strong>Version Control & CI/CD:</strong> GitHub, Jenkins</li>
-        <li><strong>Methodologies:</strong> Agile, Scrum</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Project</h2>
-      <p><strong>Victory Brewing (Beverage Domain)</strong></p>
-      <ul>
-        <li>Analyzed and validated requirements for test planning</li>
-        <li>Created automation scripts and implemented TestNG framework</li>
-        <li>Performed functional, system integration, and regression testing</li>
-        <li>Improved error handling and reported defects via JIRA</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Contact</h2>
-      <p><strong>Email:</strong> <a href="mailto:abhijit.sonawane1998@gmail.com">abhijit.sonawane1998@gmail.com</a></p>
-      <p><strong>Phone:</strong> +91 9890255699</p>
-      <p><strong>Location:</strong> Pune, India</p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/abhijit-sonawane-9a72971a1/" target="_blank">Visit my LinkedIn</a></p>
-
-    </section>
+<nav aria-label="Main">
+  <div class="wrap">
+    <b>Abhijit Sonawane</b>
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#certs">Certifications</a><a href="#education">Education</a><a href="#contact">Contact</a>
   </div>
+</nav>
 
-  <footer>
-    <p>&copy; 2025 Abhijit Sonawane. All rights reserved.</p>
-  </footer>
+<main class="wrap">
+
+<!-- HERO -->
+<div class="hero grid">
+  <div class="tile brand s8">
+    <h1>Abhijit Sonawane</h1>
+    <p class="role">SDET | Software Testing Engineer</p>
+    <p class="lead">I make sure software works before your customers find out it doesn’t. I build automation frameworks with Playwright and Selenium, check APIs and databases, and test FinTech and enterprise applications from the first requirement to the final release.</p>
+    <div class="btns">
+      <a class="btn a" href="mailto:abhijit.sonawane1998@gmail.com">Email me</a>
+      <a class="btn b" href="https://www.linkedin.com/in/abhijit-sonawane-9a72971a1/">LinkedIn profile</a>
+    </div>
+  </div>
+  <div class="tile darkt s4 avatar">
+    <div><b>AS</b><p>Pune, Maharashtra, India</p></div>
+  </div>
+  <div class="tile green s3"><span class="big">4+</span><p>years of manual and automation testing</p></div>
+  <div class="tile s3"><span class="big">2</span><p>automation stacks: Playwright and Selenium</p></div>
+  <div class="tile sun s3"><span class="big">4</span><p>client applications tested at Spring Money</p></div>
+  <div class="tile s3"><span class="big">2</span><p>awards: Star Performer and Infosys Insta</p></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="t">About me</h2>
+  <p class="sub">A quick look at how I work and what I care about.</p>
+  <div class="grid">
+    <div class="tile s6">
+      <h3>Who I am</h3>
+      <p>I am a Software Testing Engineer with 4+ years of experience across FinTech, Wealth Management and enterprise applications. I enjoy finding the problem that nobody has noticed yet, and I like writing tests that stay useful as the product grows.</p>
+      <p>I pay close attention to detail, learn new tools quickly and take on challenging work without waiting to be asked.</p>
+    </div>
+    <div class="tile s6">
+      <h3>How I test</h3>
+      <p>I start from the requirement, plan the scenarios, automate the repeatable checks and keep manual exploration for the places where a human eye matters. I follow SDLC and STLC practices and work comfortably inside Agile teams, from sprint planning to release validation.</p>
+    </div>
+    <div class="tile s4"><div class="ic">P</div><h3>Playwright with JavaScript</h3><p>Reusable page-object based UI automation for web applications.</p></div>
+    <div class="tile s4"><div class="ic">S</div><h3>Selenium with Java</h3><p>TestNG and data-driven frameworks built for regression cycles.</p></div>
+    <div class="tile s4"><div class="ic">AI</div><h3>AI-assisted automation</h3><p>I use Claude Code to write, debug and tidy up automation scripts faster.</p></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2 class="t">Work experience</h2>
+  <p class="sub">Where I have worked and what I handled day to day.</p>
+  <div class="grid">
+    <article class="tile job">
+      <span class="badge">Current role</span>
+      <h3>Software Testing Engineer, Spring Money</h3>
+      <p class="meta">May 2025 to present | Pune, Maharashtra</p>
+      <div class="cols">
+        <div>
+          <div class="step"><i>1</i><p>Test FinTech and Wealth Management applications across Client and Advisor Portals.</p></div>
+          <div class="step"><i>2</i><p>Design, develop and maintain UI automation with Playwright and JavaScript, using the Page Object Model (POM) for reusable, maintainable scripts.</p></div>
+          <div class="step"><i>3</i><p>Run functional, regression, smoke, sanity, integration, API and end-to-end testing.</p></div>
+          <div class="step"><i>4</i><p>Verify API responses, database records and financial calculations using Postman, Swagger and SQL.</p></div>
+          <div class="step"><i>5</i><p>Log and track defects in Zoho Sprints, then work with developers on fixes and retesting.</p></div>
+          <div class="step"><i>6</i><p>Use Claude Code (AI) for script development, debugging and code analysis.</p></div>
+          <div class="step"><i>7</i><p>Take part in requirement analysis, test planning, Agile ceremonies and release validation.</p></div>
+        </div>
+        <div>
+          <p><b>Financial modules I validate</b></p>
+          <ul class="chips"><li>Assets</li><li>Investments</li><li>Insurance</li><li>Goals</li><li>Cash Flow</li><li>Portfolio Valuation</li><li>Financial Planning</li></ul>
+          <p style="margin-top:18px"><b>Client applications tested</b></p>
+          <ul class="chips"><li>Prudeno</li><li>NSWealth</li><li>Advent</li><li>HumFauji</li></ul>
+          <p style="margin-top:18px"><b>Tools</b></p>
+          <ul class="chips"><li>Playwright</li><li>JavaScript</li><li>Postman</li><li>Swagger</li><li>SQL</li><li>Zoho Sprints</li><li>Claude Code</li></ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="tile job">
+      <h3>Systems Engineer, Infosys Limited</h3>
+      <p class="meta">June 2022 to April 2025 | Pune, Maharashtra</p>
+      <div class="cols">
+        <div>
+          <div class="step"><i>1</i><p>Tested enterprise applications in the Beverage domain.</p></div>
+          <div class="step"><i>2</i><p>Designed, developed and maintained automation scripts with Selenium WebDriver and Java.</p></div>
+          <div class="step"><i>3</i><p>Built frameworks using TestNG, Page Object Model (POM) and data-driven testing.</p></div>
+          <div class="step"><i>4</i><p>Created and ran functional, smoke, system integration and regression test cases.</p></div>
+          <div class="step"><i>5</i><p>Analyzed business requirements and turned them into test scenarios, test cases and automation scripts.</p></div>
+          <div class="step"><i>6</i><p>Reported defects, retested fixes and ran regression cycles. Joined peer reviews and Agile activities.</p></div>
+        </div>
+        <div>
+          <p><b>Tools</b></p>
+          <ul class="chips"><li>Selenium WebDriver</li><li>Java</li><li>TestNG</li><li>POM</li><li>Data-driven</li><li>XPath</li><li>Maven</li><li>Jira</li></ul>
+          <p style="margin-top:18px"><b>Recognition</b></p>
+          <ul class="chips"><li>Star Performer Award</li><li>Infosys Insta Award</li></ul>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="t">Technical skills</h2>
+  <p class="sub">The tools and methods I use most.</p>
+  <div class="grid">
+    <div class="tile s4"><h3>Programming</h3><p>Languages I write tests and checks in.</p><ul class="chips"><li>Java</li><li>JavaScript</li><li>SQL</li></ul></div>
+    <div class="tile s4"><h3>Automation tools</h3><p>For browser and application testing.</p><ul class="chips"><li>Playwright</li><li>Selenium WebDriver</li><li>Tosca</li></ul></div>
+    <div class="tile s4"><h3>Frameworks</h3><p>How I keep tests organised and reusable.</p><ul class="chips"><li>Playwright framework</li><li>TestNG</li><li>Page Object Model</li><li>Data-driven</li><li>Maven</li></ul></div>
+    <div class="tile darkt s6"><h3>API and backend testing</h3><p>Checking what the screen cannot show: responses, status codes, data and calculations.</p><ul class="chips"><li>Rest Assured</li><li>Postman</li><li>Swagger</li><li>Backend validation</li></ul></div>
+    <div class="tile s6"><h3>Database testing</h3><p>Validating records and business logic directly in the data.</p><ul class="chips"><li>SQL</li><li>MySQL</li><li>Database validation</li></ul></div>
+    <div class="tile green s8"><h3>Testing types</h3><ul class="chips"><li>Manual</li><li>Functional</li><li>Regression</li><li>Smoke</li><li>Sanity</li><li>Integration</li><li>End-to-end</li><li>UI</li><li>Database</li><li>Cross-browser</li></ul></div>
+    <div class="tile sun s4"><h3>AI tools</h3><ul class="chips"><li>Claude Code</li><li>AI-assisted coding</li><li>Debugging</li></ul></div>
+    <div class="tile s12"><h3>Tools and process</h3><ul class="chips"><li>Jira</li><li>Zoho Sprints</li><li>Git</li><li>GitHub</li><li>Agile</li><li>Scrum</li><li>SDLC</li><li>STLC</li><li>Defect life cycle</li></ul></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="t">Projects</h2>
+  <p class="sub">Two projects that show the range of my work.</p>
+  <div class="grid">
+    <article class="tile s6">
+      <h3>Spring Money: FinTech and Wealth Management</h3>
+      <p class="meta">Web and mobile | Client and Advisor Portals</p>
+      <p>Applications where people track assets, investments, insurance and goals. A small calculation error here means wrong numbers on someone’s financial plan, so accuracy matters.</p>
+      <ul>
+        <li>Tested workflows for investments, assets, insurance, goals, cash flow and portfolio valuation.</li>
+        <li>Built UI automation with Playwright, JavaScript and POM.</li>
+        <li>Compared API and database values with what the UI shows.</li>
+      </ul>
+    </article>
+    <article class="tile s6">
+      <h3>Victory Brewing: Beverage domain</h3>
+      <p class="meta">Enterprise web application | Infosys</p>
+      <p>A business application for a beverage client, where regression after every release had to be fast and repeatable.</p>
+      <ul>
+        <li>Automated web workflows with Selenium WebDriver and Java.</li>
+        <li>Implemented TestNG and data-driven frameworks for regression testing.</li>
+        <li>Ran functional, system integration and regression testing and reported defects in Jira.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <h2 class="t">Certifications and awards</h2>
+  <p class="sub">Proof of skills, from Infosys and from the clients I have worked with.</p>
+  <div class="grid">
+    <div class="tile cert"><div class="ic">✓</div><div><h3>Selenium Automation Tester</h3><p>Infosys Certified</p></div></div>
+    <div class="tile cert"><div class="ic">✓</div><div><h3>Rest Assured Tester</h3><p>Infosys Certified</p></div></div>
+    <div class="tile cert"><div class="ic">✓</div><div><h3>Manual Tester</h3><p>Infosys Certified</p></div></div>
+    <div class="tile cert"><div class="ic">✓</div><div><h3>Java Programmer</h3><p>Infosys Certified</p></div></div>
+    <div class="tile cert"><div class="ic">✓</div><div><h3>Agile Developer</h3><p>Infosys Certified</p></div></div>
+    <div class="tile cert"><div class="ic">✓</div><div><h3>MySQL Associate</h3><p>Infosys Certified</p></div></div>
+    <div class="tile cert"><div class="ic">✓</div><div><h3>Programming with Python 3.X</h3><p>Course certificate</p></div></div>
+    <div class="tile cert"><div class="ic">✓</div><div><h3>SOLID Principles and Design Patterns</h3><p>For Java programmers</p></div></div>
+    <div class="tile sun cert"><div class="ic" style="background:#fff;color:#B77A00">★</div><div><h3>Star Performer Award</h3><p>Given by the client</p></div></div>
+    <div class="tile sun cert"><div class="ic" style="background:#fff;color:#B77A00">★</div><div><h3>Infosys Insta Award</h3><p>Recognition at Infosys</p></div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h2 class="t">Education</h2>
+  <div class="grid" style="margin-top:18px">
+    <div class="tile s6"><h3>Bachelor of Engineering, Computer Engineering</h3><p>Savitribai Phule Pune University (JSPM’s Imperial College of Engineering and Research)</p><p class="meta">2018 to 2021</p></div>
+    <div class="tile s6"><h3>Diploma in Computer Engineering</h3><p>JSPM’s Bhivarabai Sawant Polytechnic, Wagholi, Pune</p><p class="meta">2016 to 2018</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="t">Let’s work together</h2>
+  <p class="sub">I am open to SDET and test automation roles. Send me a message.</p>
+  <div class="grid contact">
+    <div class="tile brand s4"><h3>Email</h3><a href="mailto:abhijit.sonawane1998@gmail.com" style="color:#fff">abhijit.sonawane1998@gmail.com</a></div>
+    <div class="tile s4"><h3>Phone</h3><a href="tel:+919890255699">+91 9890255699</a></div>
+    <div class="tile s4"><h3>LinkedIn</h3><a href="https://www.linkedin.com/in/abhijit-sonawane-9a72971a1/">Abhijit Sonawane</a><p>Pune, Maharashtra, India</p></div>
+  </div>
+</section>
+
+</main>
+<footer><div class="wrap">© 2026 Abhijit Sonawane. All rights reserved.</div></footer>
 </body>
 </html>
